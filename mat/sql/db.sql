@@ -1,10 +1,10 @@
 CREATE DATABASE
-    istat
+xxxx
     CHARACTER SET = utf8mb4
     COLLATE = utf8mb4_unicode_ci;
 
 ALTER DATABASE
-    serwer31807_istat7
+    xxx
     CHARACTER SET = utf8mb4
     COLLATE = utf8mb4_unicode_ci;
 
@@ -19,6 +19,10 @@ CREATE TABLE meters
 );
 
 Drop table meters;
+Drop table records;
+Drop table users;
+Drop table users_details;
+Drop table vehicles;
 
 ALTER TABLE meters ADD description VARCHAR(500);
 DROP TABLE meters;

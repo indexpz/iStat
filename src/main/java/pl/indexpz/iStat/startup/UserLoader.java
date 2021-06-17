@@ -13,33 +13,33 @@ import java.util.stream.Collectors;
 @Component
 @Transactional
 @Slf4j
-public class UserLoader implements Loader{
+public class UserLoader {
+//implements Loader
+//private final UserService userService;
 
-private final UserService userService;
-
-    public UserLoader(UserService userService) {
-        this.userService = userService;
-    }
-
-    @Override
-    public Integer getPriority() {
-        return 1;
-    }
-
-    @Override
-    public String getEntityName() {
-        return User.class.getSimpleName();
-    }
-
-    @Override
-    public Set<Long> createEntities() {
-//        userService.save(new User(null, "adam@slodowy.pl", "abc"));
-//        userService.save(new User(null, "adam@wp.pl", "cba"));
-
-        List<User> users = userService.findAll();
-        log.debug("Created authors count: {}", users.size());
-        return users.stream()
-                .map(User::getId)
-                .collect(Collectors.toSet());
-    }
+//    public UserLoader(UserService userService) {
+//        this.userService = userService;
+//    }
+//
+//    @Override
+//    public Integer getPriority() {
+//        return 1;
+//    }
+//
+//    @Override
+//    public String getEntityName() {
+//        return User.class.getSimpleName();
+//    }
+//
+//    @Override
+//    public Set<Long> createEntities() {
+////        userService.save(new User(null, "adam@slodowy.pl", "abc"));
+////        userService.save(new User(null, "adam@wp.pl", "cba"));
+//
+//        List<User> users = userService.findAll();
+//        log.debug("Created authors count: {}", users.size());
+//        return users.stream()
+//                .map(User::getId)
+//                .collect(Collectors.toSet());
+//    }
 }

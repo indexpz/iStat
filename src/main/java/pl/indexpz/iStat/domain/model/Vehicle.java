@@ -33,5 +33,5 @@ public class Vehicle {
 
 
     @OneToMany(mappedBy = "id")
-    private List<Record> records = new ArrayList<>();
+    private List<VehicleRecord> vehicleRecords = new ArrayList<>();
 }

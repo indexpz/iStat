@@ -6,13 +6,13 @@ import javax.persistence.*;
 import javax.validation.executable.ValidateOnExecution;
 
 @Entity
-@Table(name="records")
+@Table(name="vehicle_records")
 @Getter
 @Setter
 @ToString(exclude = "vehicle")
 @NoArgsConstructor
 @AllArgsConstructor
-public class Record {
+public class VehicleRecord extends Vehicle {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
