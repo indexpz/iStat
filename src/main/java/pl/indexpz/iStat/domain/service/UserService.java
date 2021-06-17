@@ -1,8 +1,6 @@
 package pl.indexpz.iStat.domain.service;
 
-
 import pl.indexpz.iStat.domain.model.User;
-
 import java.util.List;
 
 public interface UserService {

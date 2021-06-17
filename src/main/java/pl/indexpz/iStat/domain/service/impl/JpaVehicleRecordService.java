@@ -2,11 +2,9 @@ package pl.indexpz.iStat.domain.service.impl;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import pl.indexpz.iStat.domain.model.Vehicle;
 import pl.indexpz.iStat.domain.model.VehicleRecord;
 import pl.indexpz.iStat.domain.repository.VehicleRecordRepository;
 import pl.indexpz.iStat.domain.service.VehicleRecordService;
-import pl.indexpz.iStat.domain.service.VehicleService;
 import pl.indexpz.iStat.exceptions.ResourceNotFoundException;
 
 import java.util.List;
@@ -36,8 +34,10 @@ public class JpaVehicleRecordService implements VehicleRecordService {
     public void update(VehicleRecord toUpdate) {
         log.info("Updating vehicle " + toUpdate);
         VehicleRecord vehicleRecord = getById(toUpdate.getId());
-        vehicleRecord.setName(toUpdate.getName());
-        vehicleRecord.setCurrency(toUpdate.getCurrency());
+        vehicleRecord.setDate(toUpdate.getDate());
+        vehicleRecord.setMeter(toUpdate.getMeter());
+        vehicleRecord.setQuantity(toUpdate.getQuantity());
+        vehicleRecord.setPrice(toUpdate.getPrice());
         vehicleRecordRepository.save(vehicleRecord);
     }
 

@@ -1,7 +1,6 @@
 package pl.indexpz.iStat.domain.service;
 
 import pl.indexpz.iStat.domain.model.VehicleRecord;
-
 import java.util.List;
 
 public interface VehicleRecordService {
