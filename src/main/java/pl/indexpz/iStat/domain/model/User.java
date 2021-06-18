@@ -17,7 +17,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column
+    @Column(name = "nick_name")
     private String nickName;
     @Column(nullable = false, unique = true)
     private String email;
@@ -29,4 +29,12 @@ public class User {
 
     @OneToOne(optional = false,  cascade = CascadeType.ALL)
     private UserDetails details = new UserDetails();
+
+
+    public User(Long id, String nickName, String email, String password) {
+        this.id = id;
+        this.nickName = nickName;
+        this.email = email;
+        this.password = password;
+    }
 }

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.indexpz.iStat.controller.converter.UserConverter;
-import pl.indexpz.iStat.controller.dto.UserCreateForm;
+import pl.indexpz.iStat.controller.dto.UserEditForm;
 import pl.indexpz.iStat.domain.model.User;
 import pl.indexpz.iStat.domain.service.UserService;
 
@@ -17,32 +17,31 @@ import javax.validation.Valid;
 @Controller
 @RequestMapping("/forms/user")
 @Slf4j
-public class UserCreateFormController {
+public class UserEditFormController {
 
     private final UserService userService;
     private final UserConverter userConverter;
 
-    public UserCreateFormController(UserService userService, UserConverter userConverter) {
+    public UserEditFormController(UserService userService, UserConverter userConverter) {
         this.userService = userService;
         this.userConverter = userConverter;
     }
-
-
-    @GetMapping("/add")
-    public String prepareCreate(Model model){
-        model.addAttribute("data", new UserCreateForm());
-        return "users/create-form";
+        @GetMapping("/edit")
+        public String prepareEdit(Long id, Model model){
+            UserEditForm data = userConverter.toUserEditForm(userService.getById(id));
+            model.addAttribute("data", data);
+            return "users/edit-form";
     }
 
-    @PostMapping("/add")
-    public String processCreate(@Valid UserCreateForm data, BindingResult bindings){
-        log.debug("User do zapisania " + data);
+    @PostMapping("/edit")
+    public String processEdit(@Valid UserEditForm data, BindingResult bindings){
+        log.debug("User do edycji " + data);
         if(bindings.hasErrors()){
-            return "users/create-form";
+            return "users/edit-form";
         }
-        User user = data.toUser();
-        userService.add(user);
-        log.debug("User zapisany " + user);
+        User user = userConverter.from(data);
+        userService.update(user);
+        log.debug("User po edycji" + data);
         return "redirect:/home";
     }
 }

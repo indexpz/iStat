@@ -1,8 +1,10 @@
 CREATE DATABASE
-xxxx
+    serwer31807_istat777
     CHARACTER SET = utf8mb4
     COLLATE = utf8mb4_unicode_ci;
 
+
+DROP DATABASE serwer31807_istat777;
 ALTER DATABASE
     xxx
     CHARACTER SET = utf8mb4
@@ -20,7 +22,7 @@ CREATE TABLE meters
 
 Drop table meters;
 Drop table records;
-Drop table users;
+Drop table users cascade;
 Drop table users_details;
 Drop table vehicles;
 

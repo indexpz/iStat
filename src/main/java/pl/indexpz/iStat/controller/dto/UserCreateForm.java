@@ -6,20 +6,21 @@ import org.hibernate.validator.constraints.UniqueElements;
 import pl.indexpz.iStat.domain.model.User;
 
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 
 @Data
-public class UserRequest {
-    @NotEmpty
-    private String email;
-
+public class UserCreateForm {
+//    @Range(min = 2, max = 12)
     private String nickName;
+    @NotBlank
+    @Email
+    private String email;
+    @NotBlank
+//    @Range(min = 3, max = 20)
+    private String password;
 
-    @NotEmpty
-    @Range(min=6, max=20)
-        private String password;
-
-    public User toUser(){
-        return new User(null, nickName, email, password, null, null);
+    public User toUser() {
+        return new User(null, nickName, email, password);
     }
 }

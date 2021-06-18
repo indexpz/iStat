@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: pawel
-  Date: 17/06/2021
-  Time: 09:32
+  Date: 18/06/2021
+  Time: 20:50
   To change this template use File | Settings | File Templates.
 --%>
 
@@ -13,10 +13,11 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>iStat</title>
+    <title>Lista użytkowników</title>
 </head>
 <body>
-<div><a href="/forms/user/list"><button>Lista użytkowników</button></a> </div>
-<a href="/forms/user/add"><button>Zarejestruj się</button></a><a href=""><button>Zaloguj się</button></a>
+<c:forEach items="users" var="user">
+    <div><p>Id: ${user.id}, psełdonim: ${user.nickName}, email: ${user.email}, hasło: ${user.password} </p></div>
+</c:forEach>
 </body>
 </html>

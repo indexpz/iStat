@@ -18,6 +18,11 @@
 <body>
 <form method="post" action="">
     <div>
+        <label>Nazwa użytkownika:</label>
+        <input type="text" name="nickName">
+        <form:errors path="nickName"/>
+    </div>
+    <div>
         <label>Email:</label>
         <input type="email" name="email">
         <form:errors path="email"/>
