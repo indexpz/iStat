@@ -43,6 +43,6 @@ public class UserCreateFormController {
         User user = data.toUser();
         userService.add(user);
         log.debug("User zapisany " + user);
-        return "redirect:/home";
+        return "redirect:/";
     }
 }

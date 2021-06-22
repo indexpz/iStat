@@ -16,8 +16,8 @@
     <title>Lista użytkowników</title>
 </head>
 <body>
-<c:forEach items="users" var="user">
-    <div><p>Id: ${user.id}, psełdonim: ${user.nickName}, email: ${user.email}, hasło: ${user.password} </p></div>
+<c:forEach items="${users}" var="user">
+    <div><p>Id: ${user.id}, psełdonim: ${user.nickName}, email: ${user.email}, hasło: ${user.password} <a href="/forms/user/edit?id=${user.id}"><button>Edytuj</button></a> </p></div>
 </c:forEach>
 </body>
 </html>

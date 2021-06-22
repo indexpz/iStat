@@ -1,9 +1,10 @@
 CREATE DATABASE
-    serwer31807_istat777
+    istat
     CHARACTER SET = utf8mb4
     COLLATE = utf8mb4_unicode_ci;
 
 
+DROP DATABASE istat;
 DROP DATABASE serwer31807_istat777;
 ALTER DATABASE
     xxx

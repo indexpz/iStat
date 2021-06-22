@@ -27,8 +27,8 @@ public class User {
   @OneToMany(mappedBy = "name")
     private List<Vehicle> vehicles = new ArrayList<>();
 
-    @OneToOne(optional = false,  cascade = CascadeType.ALL)
-    private UserDetails details = new UserDetails();
+//    @OneToOne(optional = false,  cascade = CascadeType.ALL)
+//    private UserDetails details = new UserDetails();
 
 
     public User(Long id, String nickName, String email, String password) {

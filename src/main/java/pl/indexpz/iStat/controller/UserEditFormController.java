@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.indexpz.iStat.controller.converter.UserConverter;
 import pl.indexpz.iStat.controller.dto.UserEditForm;
-import pl.indexpz.iStat.domain.model.User;
 import pl.indexpz.iStat.domain.service.UserService;
 
 import javax.validation.Valid;
@@ -28,20 +27,20 @@ public class UserEditFormController {
     }
         @GetMapping("/edit")
         public String prepareEdit(Long id, Model model){
-            UserEditForm data = userConverter.toUserEditForm(userService.getById(id));
-            model.addAttribute("data", data);
+//            UserEditForm data = userConverter.toUserEditForm(userService.getById(id));
+            log.info("Wczytano użytkownika "+userService.getById(id));
+            model.addAttribute("user", userService.getById(id));
             return "users/edit-form";
     }
 
     @PostMapping("/edit")
     public String processEdit(@Valid UserEditForm data, BindingResult bindings){
-        log.debug("User do edycji " + data);
+        log.info("---------------------------------------------\nUser do edycji " + data);
         if(bindings.hasErrors()){
             return "users/edit-form";
         }
-        User user = userConverter.from(data);
-        userService.update(user);
-        log.debug("User po edycji" + data);
-        return "redirect:/home";
+        userService.update(userConverter.from(data));
+        log.info("---------------------------------------------\nUser po edycji" + data);
+        return "redirect:/forms/user/list";
     }
 }

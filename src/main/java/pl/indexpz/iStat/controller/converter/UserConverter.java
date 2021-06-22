@@ -5,9 +5,7 @@ import pl.indexpz.iStat.controller.dto.UserEditForm;
 import pl.indexpz.iStat.domain.model.User;
 import pl.indexpz.iStat.domain.repository.UserDetailsRepository;
 import pl.indexpz.iStat.domain.repository.UserRepository;
-import pl.indexpz.iStat.exceptions.ResourceNotFoundException;
 
-import java.util.Optional;
 
 @Component
 public class UserConverter {

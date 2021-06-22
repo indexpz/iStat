@@ -12,7 +12,7 @@ import javax.validation.executable.ValidateOnExecution;
 @ToString(exclude = "vehicle")
 @NoArgsConstructor
 @AllArgsConstructor
-public class VehicleRecord extends Vehicle {
+public class VehicleRecord  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
