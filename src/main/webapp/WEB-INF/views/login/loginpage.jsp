@@ -2,7 +2,7 @@
   Created by IntelliJ IDEA.
   User: pawel
   Date: 22/06/2021
-  Time: 08:56
+  Time: 15:04
   To change this template use File | Settings | File Templates.
 --%>
 
@@ -10,19 +10,20 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<link href="/css/style.css" rel="stylesheet" type="text/css">
+
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Header</title>
+    <title>Login</title>
 </head>
 <body>
-<%--<div class="ui-button"><a href="/forms/user/list">Lista użytkowników</a> </div>--%>
-<div class="header">
-<div class="ui-button"><a href="/register">Rejstracja</a> </div>
-<div class="ui-button"><a href="/login">Logowanie</a> </div>
-<div class="ui-button>"><a href="/logout">Wyloguj</a> </div>
-    <div class="header">
-
+<c:import url="../header_footer/header.jsp"/>
+<div class="form-container">
+<form method="post" action="/login">
+    <div><input type="text" name="username" placeholder="Nazwa użytkownika"></div>
+    <div><input type="password" name="password" placeholder="Hasło"></div>
+    <div class="ui-button"><button type="submit">Zaloguj</button> </div>
+</form>
+</div>
 </body>
 </html>

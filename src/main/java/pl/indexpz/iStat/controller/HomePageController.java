@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/")
 @Slf4j
-public class HomeController {
+public class HomePageController {
 
     @GetMapping("/")
     public String prepareHome() {
