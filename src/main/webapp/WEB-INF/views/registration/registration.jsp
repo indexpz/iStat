@@ -16,7 +16,7 @@
     <title>Rejestracja użytkownika</title>
 </head>
 <body>
-<c:import url="../header_footer/header.jsp"/>
+
 <form method="post" action="/register">
     <div>
         <label>Email:

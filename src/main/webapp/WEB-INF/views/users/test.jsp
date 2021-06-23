@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: pawel
-  Date: 22/06/2021
-  Time: 08:56
+  Date: 23/06/2021
+  Time: 13:40
   To change this template use File | Settings | File Templates.
 --%>
 
@@ -10,17 +10,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%--<link href="/css/style.css" rel="stylesheet" type="text/css">--%>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Header</title>
+    <title>Title</title>
 </head>
 <body>
-<div class="header">
-<div class="ui-button"><a href="/register">Rejstracja</a> </div>
-<div class="ui-button"><a href="/login">Logowanie</a> </div>
-    <div class="header">
-
+<H1>Test</H1>
 </body>
 </html>

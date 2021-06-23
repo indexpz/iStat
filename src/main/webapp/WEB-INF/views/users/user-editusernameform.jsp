@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: pawel
-  Date: 22/06/2021
-  Time: 08:56
+  Date: 23/06/2021
+  Time: 11:57
   To change this template use File | Settings | File Templates.
 --%>
 
@@ -10,17 +10,22 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%--<link href="/css/style.css" rel="stylesheet" type="text/css">--%>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Header</title>
+    <title>Edycja użytkownika</title>
 </head>
 <body>
-<div class="header">
-<div class="ui-button"><a href="/register">Rejstracja</a> </div>
-<div class="ui-button"><a href="/login">Logowanie</a> </div>
-    <div class="header">
+<div><h2>Zmień login/email ${user.firstName} ${user.lastName}</h2></div>
+<form:form method="post" modelAttribute="user">
+        <div> Id: ${user.id}</div>
+    <div><label>Email:<form:input path="username"/></label><form:errors path="username"/> </div>
+    <form:hidden path="id"/>
+    <div>
+        <button type="submit">Zmień email</button>
+    </div>
+</form:form>
+
 
 </body>
 </html>

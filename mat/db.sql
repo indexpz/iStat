@@ -11,3 +11,8 @@ CREATE DATABASE
     istat
     CHARACTER SET = utf8mb4
     COLLATE = utf8mb4_unicode_ci;
+
+
+SELECT *From users;
+
+DELETE FROM users WHERE id = 10;

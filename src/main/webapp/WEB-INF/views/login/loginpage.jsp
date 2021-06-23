@@ -17,7 +17,7 @@
     <title>Login</title>
 </head>
 <body>
-<c:import url="../header_footer/header.jsp"/>
+
 <div class="form-container">
 <form method="post" action="/login">
     <div><input type="text" name="username" placeholder="Nazwa użytkownika"></div>

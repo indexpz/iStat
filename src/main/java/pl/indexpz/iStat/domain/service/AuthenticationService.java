@@ -26,5 +26,11 @@ private final PasswordEncoder passwordEncoder;
         userRepository.save(user);
     }
 
+    public void updateUserPassword(User user){
+        String encodedPassword = passwordEncoder.encode(user.getPassword());
+        user.setPassword(encodedPassword);
+        userRepository.save(user);
+    }
+
 
 }
