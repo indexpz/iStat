@@ -16,3 +16,5 @@ CREATE DATABASE
 SELECT *From users;
 
 DELETE FROM users WHERE id = 10;
+
+drop table vehicles;

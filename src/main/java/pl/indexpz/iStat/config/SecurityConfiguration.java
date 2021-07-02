@@ -39,6 +39,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/").permitAll()
                 .antMatchers("/users/user-editpasswordform.jsp").fullyAuthenticated()
                 .antMatchers("/users", "/users/", "/users/*", "/users/**").authenticated()
+                .antMatchers("/vehicle", "/vehicle/", "/vehicle/*", "/vehicle/**").authenticated()
                 .antMatchers("/forms/user", "/forms/user/", "/forms/user/*").hasAnyRole("USER")
                 .antMatchers("/static/css", "/static/css/**").permitAll()
                 .antMatchers("/*").permitAll()

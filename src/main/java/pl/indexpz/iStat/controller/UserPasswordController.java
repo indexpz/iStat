@@ -39,7 +39,7 @@ public class UserPasswordController {
             return "users/user-editpasswordform";
         }
 
-        authenticationService.updateUserPassword(user);
+        authenticationService.registerUser(user);
         log.info("User po edycji " + user.getUsername() + ", " + user.getFirstName() + ", " + user.getLastName());
         return "redirect:/login";
     }

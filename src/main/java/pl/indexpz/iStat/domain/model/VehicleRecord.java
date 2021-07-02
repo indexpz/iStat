@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "vehicle_records")
@@ -23,5 +24,11 @@ public class VehicleRecord {
     private Double refueling;
     @Column(name="price_per_fuel_unit")
     private Double pricePerFuelUnit;
+    @Column
+    private LocalDate data;
+
+
+    @ManyToOne
+    private Vehicle vehicle;
 
 }

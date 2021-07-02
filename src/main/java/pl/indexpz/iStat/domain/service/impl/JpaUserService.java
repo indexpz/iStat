@@ -34,6 +34,7 @@ public class JpaUserService implements UserService {
     public User getUserByUserName(String username) {
         return userRepository.findByUsername(username).orElseThrow((() -> new ResourceNotFoundException("User with username " + username + " not exist.")));
     }
+
     @Override
     public User getUserById(Long userId) {
         return userRepository.findById(userId).orElseThrow((() -> new ResourceNotFoundException("User with id " + userId + " not exist.")));

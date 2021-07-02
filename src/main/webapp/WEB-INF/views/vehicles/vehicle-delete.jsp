@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: pawel
-  Date: 22/06/2021
-  Time: 17:36
+  Date: 29/06/2021
+  Time: 17:22
   To change this template use File | Settings | File Templates.
 --%>
 
@@ -16,10 +16,16 @@
     <title>Title</title>
 </head>
 <body>
-<c:import url="../header_footer/heder_userhompage.jsp"/>
-
-<c:import url="/WEB-INF/views/vehicles/vehicles-list.jsp"/>
+<form method="post" action="">
+    <p>Czy usunąć pojazd: ${vehicle.vehicleName} o id = ${vehicle.id}</p>
+    <p>
+        <input type="hidden" name="id" value="${vehicle.id}">
+        <a href="/user/homepage">
+            >Nie
+        </a>
+        <button type="submit">Tak</button>
+    </p>
+</form>
 
 </body>
-
 </html>
