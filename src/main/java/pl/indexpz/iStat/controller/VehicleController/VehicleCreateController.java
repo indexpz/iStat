@@ -1,4 +1,4 @@
-package pl.indexpz.iStat.controller;
+package pl.indexpz.iStat.controller.VehicleController;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

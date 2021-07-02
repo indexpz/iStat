@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface VehicleRecordService {
 
-    public VehicleRecord addVehicleRecord(VehicleRecord vehicleRecordToAdd, Vehicle vehicle);
+    public VehicleRecord addVehicleRecord(VehicleRecord vehicleRecordToAdd);
 
     public List<VehicleRecord> getVehicleRecords();
 

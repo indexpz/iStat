@@ -1,4 +1,4 @@
-package pl.indexpz.iStat.controller;
+package pl.indexpz.iStat.controller.UserController;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;

@@ -1,4 +1,4 @@
-package pl.indexpz.iStat.controller;
+package pl.indexpz.iStat.controller.VehicleRecordController;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -15,6 +15,7 @@ import pl.indexpz.iStat.domain.service.VehicleRecordService;
 import pl.indexpz.iStat.domain.service.VehicleService;
 
 import javax.validation.Valid;
+import java.time.LocalDate;
 
 @Controller
 @RequestMapping("/vehicle-records/add")
@@ -27,20 +28,22 @@ public class VehicleRecordCreateController {
 
 
     @GetMapping
-    public String prepareCreate(Model model) {
+    public String prepareCreate(Long id, Model model) {
         model.addAttribute("vehicleRecord", new VehicleRecord());
+        model.addAttribute("vehicle", vehicleService.getVehicleById(id));
         return "/vehicle_records/vehicle-records-add";
     }
 
 
     @PostMapping
-    public String processCreate(@Valid VehicleRecord vehicleRecord, Long id, BindingResult bindings) {
+    public String processCreate(@Valid VehicleRecord vehicleRecord, BindingResult bindings) {
         if (bindings.hasErrors()) {
             return "/vehicle_records/vehicle-records-add";
         }
 
-        Vehicle vehicle = vehicleService.getVehicleById(id);
-        vehicleRecordService.addVehicleRecord(vehicleRecord, vehicle);
-        return "redirect:/vehicle_records/vehicle-records-list";
+        Vehicle vehicle = vehicleRecord.getVehicle();
+        vehicleRecord.setVehicle(vehicle);
+        vehicleRecordService.addVehicleRecord(vehicleRecord);
+        return "redirect:/vehicle-records/list";
     }
 }

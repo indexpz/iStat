@@ -2,8 +2,10 @@ package pl.indexpz.iStat.domain.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import pl.indexpz.iStat.domain.model.User;
 import pl.indexpz.iStat.domain.model.Vehicle;
 import pl.indexpz.iStat.domain.model.VehicleRecord;
 import pl.indexpz.iStat.domain.repository.UserRepository;
@@ -13,6 +15,7 @@ import pl.indexpz.iStat.domain.service.VehicleRecordService;
 import pl.indexpz.iStat.domain.service.VehicleService;
 import pl.indexpz.iStat.exceptions.ResourceNotFoundException;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -27,16 +30,18 @@ public class JpaVehicleRecordService implements VehicleRecordService {
 
     @Override
     @Transactional
-    public VehicleRecord addVehicleRecord(VehicleRecord vehicleRecordToAdd, Vehicle vehicle) {
-//        Vehicle vehicle = vehicleRepository.findById(vehicleId).orElseThrow((() -> new ResourceNotFoundException("Vehicle with id " + vehicleId + " not exist.")));
-        vehicleRecordToAdd.setVehicle(vehicle);
+    public VehicleRecord addVehicleRecord(VehicleRecord vehicleRecordToAdd) {
+
+//        Vehicle vehicle = vehicleRepository.findById().orElseThrow((() -> new ResourceNotFoundException("Vehicle with id " + vehicleId + " not exist.")));
+//
+        vehicleRecordToAdd.setVehicle(vehicleRecordToAdd.getVehicle());
         return vehicleRecordRepository.save(vehicleRecordToAdd);
     }
 
 
     @Override
     public List<VehicleRecord> getVehicleRecords() {
-        return null;
+        return vehicleRecordRepository.findAll();
     }
 
     @Override
@@ -60,4 +65,7 @@ public class JpaVehicleRecordService implements VehicleRecordService {
         VehicleRecord vehicleRecord = getVehicleRecordById(vehicleRecordToDelete.getId());
         vehicleRecordRepository.delete(vehicleRecord);
     }
+
+
+
 }

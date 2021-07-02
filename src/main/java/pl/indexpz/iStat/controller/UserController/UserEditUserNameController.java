@@ -1,4 +1,4 @@
-package pl.indexpz.iStat.controller;
+package pl.indexpz.iStat.controller.UserController;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.indexpz.iStat.domain.model.User;
@@ -16,10 +15,10 @@ import pl.indexpz.iStat.domain.service.UserService;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping("/user/edit")
+@RequestMapping("/user/editusername")
 @RequiredArgsConstructor //zamiast konstruktora
 @Slf4j
-public class UserEditController {
+public class UserEditUserNameController {
 
     private final UserService userService;
 
@@ -28,18 +27,18 @@ public class UserEditController {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         model.addAttribute("user", userService.getUserByUserName(username));
         log.info("User do edycji "  + userService.getUserByUserName(username).getUsername() + ", " + userService.getUserByUserName(username).getFirstName() + ", " +userService.getUserByUserName(username).getLastName());
-        return "users/user-editform";
+        return "users/user-editusernameform";
     }
 
     @PostMapping
     public String processEdit(@Valid User user, BindingResult bindings) {
         log.info("User do edycji "  + user.getUsername() + ", " + user.getFirstName() + ", " + user.getLastName());
         if (bindings.hasErrors()) {
-            return "users/user-editform";
+            return "users/user-editusernameform";
         }
-
-        userService.updateUser(user);
+       
+        userService.updateUserName(user);
         log.info("User po edycji " + user.getUsername() + ", " + user.getFirstName() + ", " + user.getLastName());
-        return "redirect:/user/homepage";
+        return "redirect:/login";
     }
 }

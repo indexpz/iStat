@@ -25,7 +25,7 @@ public class VehicleRecord {
     @Column(name="price_per_fuel_unit")
     private Double pricePerFuelUnit;
     @Column
-    private LocalDate data;
+    private String data;
 
 
     @ManyToOne

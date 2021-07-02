@@ -40,8 +40,8 @@ public class JpaVehicleService implements VehicleService {
     }
 
     @Override
-    public Vehicle getVehicleById(Long vehicleId) {
-        return vehicleRepository.findById(vehicleId).orElseThrow((() -> new ResourceNotFoundException("Vehicle with id " + vehicleId + " not exist.")));
+    public Vehicle getVehicleById(Long id) {
+        return vehicleRepository.findById(id).orElseThrow((() -> new ResourceNotFoundException("Vehicle with id " + id + " not exist.")));
     }
 
 

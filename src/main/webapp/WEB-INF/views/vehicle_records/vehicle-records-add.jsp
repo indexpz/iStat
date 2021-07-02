@@ -16,13 +16,14 @@
     <title>Title</title>
 </head>
 <body>
+<div><h3>Użytkownik: ${user.firstName} ${user.lastName}, pojazd ${vehicle.vehicleName} o id = ${vehicle.id}</h3></div>
 <form:form method="post" modelAttribute="vehicleRecord">
-    <div><label>Data: <form:input path="data"/> <form:errors path="data"/></label></div>
-    <div><label>Odczyt licznika <form:input path="distanceMeter"/><form:errors path="distanceMeter"/><</label></div>
+    <div><label>Data: <form:input path="data" type="data"/> <form:errors path="data"/></label></div>
+    <div><label>Odczyt licznika <form:input path="distanceMeter"/><form:errors path="distanceMeter"/></label></div>
     <div><label>Ilość paliwa <form:input path="refueling"/><form:errors path="refueling"/></label></div>
     <div><label>Cena za jednostkę <form:input path="pricePerFuelUnit"/> <form:errors path="pricePerFuelUnit"/></label>
     </div>
-    <%--    <form:hidden path="userID"/>--%>
+<%--        <form:hidden path="${vehicle.id}"/>--%>
     <div>
         <button type="submit">Dodaj</button>
     </div>
