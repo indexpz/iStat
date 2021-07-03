@@ -2,17 +2,13 @@ package pl.indexpz.iStat.domain.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import pl.indexpz.iStat.domain.model.User;
 import pl.indexpz.iStat.domain.model.Vehicle;
 import pl.indexpz.iStat.domain.model.VehicleRecord;
-import pl.indexpz.iStat.domain.repository.UserRepository;
 import pl.indexpz.iStat.domain.repository.VehicleRecordRepository;
 import pl.indexpz.iStat.domain.repository.VehicleRepository;
 import pl.indexpz.iStat.domain.service.VehicleRecordService;
-import pl.indexpz.iStat.domain.service.VehicleService;
 import pl.indexpz.iStat.exceptions.ResourceNotFoundException;
 
 import java.time.LocalDate;
@@ -25,16 +21,21 @@ public class JpaVehicleRecordService implements VehicleRecordService {
 
     private final VehicleRecordRepository vehicleRecordRepository;
     private final VehicleRepository vehicleRepository;
-    private final UserRepository userRepository;
 
 
     @Override
     @Transactional
-    public VehicleRecord addVehicleRecord(VehicleRecord vehicleRecordToAdd) {
+    public VehicleRecord addVehicleRecord(VehicleRecord vehicleRecordToAdd,  Vehicle vehicle) {
 
-//        Vehicle vehicle = vehicleRepository.findById().orElseThrow((() -> new ResourceNotFoundException("Vehicle with id " + vehicleId + " not exist.")));
-//
-        vehicleRecordToAdd.setVehicle(vehicleRecordToAdd.getVehicle());
+//        Vehicle vehicle = vehicleRepository.findById(vehicleId).orElseThrow((() -> new ResourceNotFoundException("Vehicle with id " + vehicleId + " not exist.")));
+
+//        Vehicle vehicle = vehicleRecordToAdd.getVehicle();
+
+//        vehicleRecordToAdd.setVehicle(vehicleRecordToAdd.getVehicle());
+//        return vehicleRecordRepository.save(vehicleRecordToAdd);
+
+
+        vehicleRecordToAdd.setVehicle(vehicle);
         return vehicleRecordRepository.save(vehicleRecordToAdd);
     }
 
@@ -42,6 +43,12 @@ public class JpaVehicleRecordService implements VehicleRecordService {
     @Override
     public List<VehicleRecord> getVehicleRecords() {
         return vehicleRecordRepository.findAll();
+    }
+
+    @Override
+    public List<VehicleRecord> getVehicleRecordsByVehicleId(Long vehicleId) {
+       Vehicle vehicle = vehicleRepository.findById(vehicleId).orElseThrow(()->new ResourceNotFoundException("Vehicle with id " + vehicleId + " not exist."));
+        return vehicleRecordRepository.findAllVehicleRecordByVehicle(vehicle);
     }
 
     @Override

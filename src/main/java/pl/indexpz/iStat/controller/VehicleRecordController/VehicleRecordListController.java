@@ -31,7 +31,7 @@ public class VehicleRecordListController {
     String username = SecurityContextHolder.getContext().getAuthentication().getName();
     model.addAttribute("user",userService.getUserByUserName(username));
     model.addAttribute("vehicle", vehicleService.getVehicleById(id));
-    model.addAttribute("vehicleRecords", vehicleRecordService.getVehicleRecords());
+    model.addAttribute("vehicleRecords", vehicleRecordService.getVehicleRecordsByVehicleId(id));
     return "/vehicle_records/vehicle-records-list";
 }
 }

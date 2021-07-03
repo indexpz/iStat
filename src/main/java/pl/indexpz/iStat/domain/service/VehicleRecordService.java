@@ -7,9 +7,11 @@ import java.util.List;
 
 public interface VehicleRecordService {
 
-    public VehicleRecord addVehicleRecord(VehicleRecord vehicleRecordToAdd);
+    public VehicleRecord addVehicleRecord(VehicleRecord vehicleRecordToAdd, Vehicle vehicle);
 
     public List<VehicleRecord> getVehicleRecords();
+
+    public List<VehicleRecord> getVehicleRecordsByVehicleId(Long vehicleId);
 
     public VehicleRecord getVehicleRecordById(Long vehicleRecordId);
 

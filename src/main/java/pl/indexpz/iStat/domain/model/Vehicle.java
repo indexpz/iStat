@@ -36,7 +36,7 @@ public class Vehicle {
 
 
 //    @OneToMany(mappedBy = "id", cascade = CascadeType.REMOVE, orphanRemoval = true)
-    @OneToMany(mappedBy = "id")
+    @OneToMany(mappedBy = "vehicle")
     @OnDelete(action = OnDeleteAction.CASCADE)
     private List<VehicleRecord> vehicleRecords = new ArrayList<>();
 

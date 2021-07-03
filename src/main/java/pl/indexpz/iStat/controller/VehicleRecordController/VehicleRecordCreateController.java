@@ -31,19 +31,26 @@ public class VehicleRecordCreateController {
     public String prepareCreate(Long id, Model model) {
         model.addAttribute("vehicleRecord", new VehicleRecord());
         model.addAttribute("vehicle", vehicleService.getVehicleById(id));
-        return "/vehicle_records/vehicle-records-add";
+        log.info(vehicleService.getVehicleById(id).getVehicleName() +" $$$$$$$$$$$$$$$$$$$$$$$$$ "+ id);
+        return "vehicle_records/vehicle-records-add";
     }
 
 
     @PostMapping
-    public String processCreate(@Valid VehicleRecord vehicleRecord, BindingResult bindings) {
+    public String processCreate(@Valid VehicleRecord vehicleRecord, Long id, BindingResult bindings) {
+        log.info(vehicleRecord.getId() +" ############################################ "+ id);
         if (bindings.hasErrors()) {
             return "/vehicle_records/vehicle-records-add";
         }
 
-        Vehicle vehicle = vehicleRecord.getVehicle();
-        vehicleRecord.setVehicle(vehicle);
-        vehicleRecordService.addVehicleRecord(vehicleRecord);
-        return "redirect:/vehicle-records/list";
+//        Vehicle vehicle = vehicleService.getVehicleById(id);
+//        vehicleRecord.setVehicle(vehicle);
+//        vehicleRecordService.addVehicleRecord(vehicleRecord, id);
+
+
+
+        Vehicle vehicle = vehicleService.getVehicleById(id);
+        vehicleRecordService.addVehicleRecord(vehicleRecord, vehicle);
+        return "redirect:/vehicle-records/list?id="+id;
     }
 }
