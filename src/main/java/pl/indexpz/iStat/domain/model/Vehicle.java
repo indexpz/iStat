@@ -35,9 +35,9 @@ public class Vehicle {
     private String fuelUnit;
 
 
-//    @OneToMany(mappedBy = "id", cascade = CascadeType.REMOVE, orphanRemoval = true)
-    @OneToMany(mappedBy = "vehicle")
-    @OnDelete(action = OnDeleteAction.CASCADE)
+//    @OneToMany( cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "vehicle", cascade = CascadeType.ALL)
+//    @JoinColumn(name = "vehicle_id")
     private List<VehicleRecord> vehicleRecords = new ArrayList<>();
 
     @ManyToOne

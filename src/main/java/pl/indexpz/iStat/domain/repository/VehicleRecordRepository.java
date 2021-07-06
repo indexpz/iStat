@@ -11,4 +11,5 @@ public interface VehicleRecordRepository extends JpaRepository<VehicleRecord, Lo
 
     List<VehicleRecord> findAllVehicleRecordByVehicle(Vehicle vehicle);
 
+
 }

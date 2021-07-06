@@ -17,12 +17,12 @@
 </head>
 <body>
 <div><h3>Użytkownik: ${user.firstName} ${user.lastName}, pojazd ${vehicle.vehicleName} o id = ${vehicle.id}</h3></div>
-<div><a href="/vehicle-records/add?id=${vehicle.id}">Dodaj tankowanie</a></div>
+<div><a href="/vehicle-records/add?vehicleId=${vehicle.id}">Dodaj tankowanie</a></div>
 
 <c:forEach items="${vehicleRecords}" var="vehicleRecords">
     <div>${vehicleRecords.id} ${vehicleRecords.data} ${vehicleRecords.distanceMeter} ${vehicleRecords.refueling} ${vehicleRecords.pricePerFuelUnit} ${vehicleRecords.vehicle.id}
-<%--        <a href="/vehicle/edit-data?id=${vehicleRecords.id}">Edytuj dane</a>--%>
-<%--        <a href="/vehicle/delete?id=${vehicleRecords.id}">Usuń</a>--%>
+        <a href="/vehicle-records/edit?id=${vehicleRecords.id}&vehicleId=${vehicle.id}">Edytuj dane</a>
+        <a href="/vehicle-records/delete?id=${vehicleRecords.id}&vehicleId=${vehicle.id}">Usuń</a>
     </div>
 <%--            <form:hidden path="${vehicle.id}"/>--%>
 

@@ -28,29 +28,27 @@ public class VehicleRecordCreateController {
 
 
     @GetMapping
-    public String prepareCreate(Long id, Model model) {
+    public String prepareCreate( Model model) {
         model.addAttribute("vehicleRecord", new VehicleRecord());
-        model.addAttribute("vehicle", vehicleService.getVehicleById(id));
-        log.info(vehicleService.getVehicleById(id).getVehicleName() +" $$$$$$$$$$$$$$$$$$$$$$$$$ "+ id);
+
         return "vehicle_records/vehicle-records-add";
     }
 
 
+
+
     @PostMapping
-    public String processCreate(@Valid VehicleRecord vehicleRecord, Long id, BindingResult bindings) {
-        log.info(vehicleRecord.getId() +" ############################################ "+ id);
+    public String processCreate(@Valid VehicleRecord vehicleRecord, Long vehicleId, BindingResult bindings) {
         if (bindings.hasErrors()) {
             return "/vehicle_records/vehicle-records-add";
         }
-
-//        Vehicle vehicle = vehicleService.getVehicleById(id);
-//        vehicleRecord.setVehicle(vehicle);
-//        vehicleRecordService.addVehicleRecord(vehicleRecord, id);
-
-
-
-        Vehicle vehicle = vehicleService.getVehicleById(id);
+        log.info("vehicleRecord id "+vehicleRecord.getId());
+//log.info("vehicle id" + vehicleService.getVehicleById(id).getVehicleName());
+        Vehicle vehicle = vehicleService.getVehicleById(vehicleId);
+        log.info("zapis do bazy vehicleName " + vehicle.getVehicleName() +" vehicleId "+ vehicle.getId());
+        vehicleRecord.setId(vehicleRecord.getId());
+        log.info("zapis do bazy vehicleNameRecord id " + vehicleRecord.getId());
         vehicleRecordService.addVehicleRecord(vehicleRecord, vehicle);
-        return "redirect:/vehicle-records/list?id="+id;
+        return "redirect:/vehicle-records/list?id="+vehicleId;
     }
 }

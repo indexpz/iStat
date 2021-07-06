@@ -23,31 +23,23 @@ public class JpaVehicleRecordService implements VehicleRecordService {
     private final VehicleRepository vehicleRepository;
 
 
+//    @Override
+//    public VehicleRecord addVehicleRecord(VehicleRecord vehicleRecordToAdd) {
+//        Vehicle vehicle = vehicleRepository.findVehicleByVehicleRecord(vehicleRecordToAdd);
+//        vehicleRecordToAdd.setVehicle(vehicle);
+//        return vehicleRecordRepository.save(vehicleRecordToAdd);
+//    }
+
     @Override
     @Transactional
-    public VehicleRecord addVehicleRecord(VehicleRecord vehicleRecordToAdd,  Vehicle vehicle) {
-
-//        Vehicle vehicle = vehicleRepository.findById(vehicleId).orElseThrow((() -> new ResourceNotFoundException("Vehicle with id " + vehicleId + " not exist.")));
-
-//        Vehicle vehicle = vehicleRecordToAdd.getVehicle();
-
-//        vehicleRecordToAdd.setVehicle(vehicleRecordToAdd.getVehicle());
-//        return vehicleRecordRepository.save(vehicleRecordToAdd);
-
-
+    public VehicleRecord addVehicleRecord(VehicleRecord vehicleRecordToAdd, Vehicle vehicle) {
         vehicleRecordToAdd.setVehicle(vehicle);
         return vehicleRecordRepository.save(vehicleRecordToAdd);
     }
 
-
-    @Override
-    public List<VehicleRecord> getVehicleRecords() {
-        return vehicleRecordRepository.findAll();
-    }
-
     @Override
     public List<VehicleRecord> getVehicleRecordsByVehicleId(Long vehicleId) {
-       Vehicle vehicle = vehicleRepository.findById(vehicleId).orElseThrow(()->new ResourceNotFoundException("Vehicle with id " + vehicleId + " not exist."));
+        Vehicle vehicle = vehicleRepository.findById(vehicleId).orElseThrow(() -> new ResourceNotFoundException("Vehicle with id " + vehicleId + " not exist."));
         return vehicleRecordRepository.findAllVehicleRecordByVehicle(vehicle);
     }
 
@@ -64,7 +56,6 @@ public class JpaVehicleRecordService implements VehicleRecordService {
         vehicleRecord.setRefueling(vehicleRecordToUpdate.getRefueling());
         vehicleRecord.setPricePerFuelUnit(vehicleRecordToUpdate.getPricePerFuelUnit());
         vehicleRecordRepository.save(vehicleRecord);
-
     }
 
     @Override
@@ -72,7 +63,6 @@ public class JpaVehicleRecordService implements VehicleRecordService {
         VehicleRecord vehicleRecord = getVehicleRecordById(vehicleRecordToDelete.getId());
         vehicleRecordRepository.delete(vehicleRecord);
     }
-
 
 
 }

@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: pawel
-  Date: 29/06/2021
-  Time: 17:22
+  Date: 03/07/2021
+  Time: 09:22
   To change this template use File | Settings | File Templates.
 --%>
 
@@ -17,10 +17,10 @@
 </head>
 <body>
 <form method="post" action="">
-    <p>Czy usunąć pojazd: ${vehicle.vehicleName} o id = ${vehicle.id}</p>
+    <p>Czy usunąć tankowanie pojazdu o id ${vehicle.id}: ${vehicleRecord.data} o id = ${vehicleRecord.id}</p>
     <p>
-        <input type="hidden" name="id" value="${vehicle.id}">
-        <a href="/user/homepage">
+        <input type="hidden" name="id" value="${vehicleRecord.id}">
+        <a href="/vehicle-records/list?id=${vehicle.id}">
             Nie
         </a>
         <button type="submit">Tak</button>

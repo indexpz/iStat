@@ -44,6 +44,12 @@ public class JpaVehicleService implements VehicleService {
         return vehicleRepository.findById(id).orElseThrow((() -> new ResourceNotFoundException("Vehicle with id " + id + " not exist.")));
     }
 
+    @Override
+    public Vehicle getVehicleByVehicleName(String vehicleName) {
+        Vehicle vehicle = vehicleRepository.findVehicleByVehicleName(vehicleName);
+        return vehicle;
+    }
+
 
     @Override
     public void updateVehicle(Vehicle vehicleToUpdate) {

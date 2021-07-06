@@ -18,6 +18,7 @@ public interface VehicleService {
 
      public Vehicle getVehicleById(Long vehicleId);
 
+    public Vehicle getVehicleByVehicleName(String vehicleName);
 
      public void updateVehicle(Vehicle vehicleToUpdate);
 
