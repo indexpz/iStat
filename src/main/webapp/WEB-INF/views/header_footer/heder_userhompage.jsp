@@ -20,8 +20,8 @@
 <div><h3>Witaj ${user.firstName} ${user.lastName}</h3></div>
     <div class="ui-button>"><a href="/logout">Wyloguj</a> </div>
     <div class="ui-button>"><a href="/user/edit">Edytuj Dane</a> </div>
-    <div class="ui-button>"><a href="/user/editusername">Zmień login/email</a> </div>
-    <div class="ui-button>"><a href="/user/editpassword">Zmień hasło</a> </div>
+<%--    <div class="ui-button>"><a href="/user/editusername">Zmień login/email</a> </div>--%>
+<%--    <div class="ui-button>"><a href="/user/editpassword">Zmień hasło</a> </div>--%>
     <div class="ui-button>"><a href="/user/delete">Usuń użytkownika</a> </div>
 
 </div>

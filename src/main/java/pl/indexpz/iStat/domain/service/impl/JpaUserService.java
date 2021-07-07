@@ -18,16 +18,10 @@ import java.util.Optional;
 @RequiredArgsConstructor //zamiast konstruktora
 public class JpaUserService implements UserService {
 
-    @PersistenceContext
-    protected EntityManager em;
-
-
     private final UserRepository userRepository;
 
 
 //    String username = SecurityContextHolder.getContext().getAuthentication().getName();
-
-
 
 
     @Override

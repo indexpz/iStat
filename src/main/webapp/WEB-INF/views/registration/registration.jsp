@@ -20,22 +20,26 @@
 <form method="post" action="/register">
     <div>
         <label>Email:
-        <input type="text" name="username"/>
+            <input type="email" name="username"/>
+            <form:errors path="username"/>
         </label>
     </div>
     <div>
         <label>Hasło:
             <input type="password" name="password"/>
+            <form:errors path="password"/>
         </label>
     </div>
     <div>
         <label>Imię:
             <input type="text" name="firstName"/>
+            <form:errors path="firstName"/>
         </label>
     </div>
     <div>
         <label>Nazwisko:
             <input type="text" name="lastName"/>
+            <form:errors path="lastName"/>
         </label>
     </div>
     <div>

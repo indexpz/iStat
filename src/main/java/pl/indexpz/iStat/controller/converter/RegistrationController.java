@@ -30,3 +30,25 @@ public class RegistrationController {
         return "redirect:/login";
     }
 }
+/*    private final AuthenticationService authenticationService;
+
+    public RegistrationController(AuthenticationService authenticationService) {
+        this.authenticationService = authenticationService;
+    }
+
+    @GetMapping
+    public String prepareRegistrationPage(Model model) {
+        model.addAttribute("user", new CreateUserForm());
+        return "registration/registration";
+    }
+
+    @PostMapping
+    public String processRegistrationPage(@Valid CreateUserForm data, BindingResult bindings) {
+        if (bindings.hasErrors()) {
+            return "registration/registration";
+        }
+        authenticationService.registerUser(data.toUser());
+        return "redirect:/login";
+    }
+
+ */
