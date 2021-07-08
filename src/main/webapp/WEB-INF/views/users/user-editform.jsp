@@ -14,14 +14,18 @@
 <head>
     <meta charset="UTF-8">
     <title>Edycja użytkownika</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="/webapp/css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div><h2>Edytuj ${user.firstName} ${user.lastName}</h2></div>
-<form:form method="post" modelAttribute="user">
-        <div> Id: ${user.id}</div>
+<form:form method="post" modelAttribute="data">
+        <div> Id: ${data.id}</div>
 
 <%--    <div><label>Email:<form:input path="username"/></label><form:errors path="username"/> </div>--%>
-    <div> Email: ${user.username}</div>
+<%--    <div> Email: ${user.username}</div>--%>
     <div><label>Imię:<form:input path="firstName"/></label><form:errors path="firstName"/></div>
     <div><label>Nazwisko:<form:input path="lastName"/></label><form:errors path="lastName"/></div>
     <form:hidden path="username"/>

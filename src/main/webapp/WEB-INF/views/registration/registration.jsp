@@ -14,37 +14,41 @@
 <head>
     <meta charset="UTF-8">
     <title>Rejestracja użytkownika</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="/webapp/css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 
-<form method="post" action="/register">
+<form:form method="post" modelAttribute="data" action="/register">
     <div>
         <label>Email:
             <input type="email" name="username"/>
-            <form:errors path="username"/>
+            <form:errors path="username" element="div"/>
         </label>
     </div>
     <div>
         <label>Hasło:
             <input type="password" name="password"/>
-            <form:errors path="password"/>
+            <form:errors path="password" element="div"/>
         </label>
     </div>
     <div>
         <label>Imię:
             <input type="text" name="firstName"/>
-            <form:errors path="firstName"/>
+            <form:errors path="firstName" element="div"/>
         </label>
     </div>
     <div>
         <label>Nazwisko:
             <input type="text" name="lastName"/>
-            <form:errors path="lastName"/>
+            <form:errors path="lastName"  element="div"/>
         </label>
     </div>
     <div>
         <button type="submit">Zarejestruj</button>
     </div>
-</form>
+</form:form>
 </body>
 </html>

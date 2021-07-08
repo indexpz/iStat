@@ -26,12 +26,10 @@ public class UserConverter {
         user.setId(data.getId());
         user.setFirstName(data.getFirstName());
         user.setLastName(data.getLastName());
-
         return user;
     }
 
-
-    public EditUserForm to(User user) {
+    public EditUserForm toUser(User user) {
         EditUserForm data = new EditUserForm();
         data.setId(user.getId());
         data.setFirstName(user.getFirstName());
