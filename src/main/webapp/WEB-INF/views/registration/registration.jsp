@@ -17,7 +17,7 @@
 </head>
 <body>
 
-<form method="post" action="/register">
+<form:form method="post" action="/register">
     <div>
         <label>Email:
             <input type="email" name="username"/>
@@ -45,6 +45,6 @@
     <div>
         <button type="submit">Zarejestruj</button>
     </div>
-</form>
+</form:form>
 </body>
 </html>
