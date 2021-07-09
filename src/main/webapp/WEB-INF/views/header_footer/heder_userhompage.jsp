@@ -18,16 +18,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-    <link href="/webapp/css/style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="<c:url value='/css/style.css'/>"/>
 </head>
 <body>
 <div class="header">
-<div><h3>Witaj ${user.firstName} ${user.lastName}</h3></div>
-    <div class="ui-button>"><a href="/logout">Wyloguj</a> </div>
-    <div class="ui-button>"><a href="/user/edit">Edytuj Dane</a> </div>
-<%--    <div class="ui-button>"><a href="/user/editusername">Zmień login/email</a> </div>--%>
-<%--    <div class="ui-button>"><a href="/user/editpassword">Zmień hasło</a> </div>--%>
-    <div class="ui-button>"><a href="/user/delete">Usuń użytkownika</a> </div>
+    <div><h3>Witaj ${user.firstName} ${user.lastName}</h3></div>
+    <div class="ui-button>"><a href="/logout">Wyloguj</a></div>
+    <div class="ui-button>"><a href="/user/edit">Edytuj Dane</a></div>
+    <%--    <div class="ui-button>"><a href="/user/editusername">Zmień login/email</a> </div>--%>
+    <%--    <div class="ui-button>"><a href="/user/editpassword">Zmień hasło</a> </div>--%>
+    <div class="ui-button>"><a href="/user/delete">Usuń użytkownika</a></div>
 
 </div>
 </body>

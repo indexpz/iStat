@@ -35,12 +35,5 @@ public class UserHomePageController {
         return "/users/user-homepage";
     }
 
-//    @PostMapping
-//    public String processHomePage(@Valid Vehicle, BindingResult bindings) {
-//        if (bindings.hasErrors()) {
-//            return "/users/user-homepage";
-//        }
-//
-//
-//    }
+
 }
