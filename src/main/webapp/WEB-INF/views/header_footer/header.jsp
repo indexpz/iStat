@@ -10,10 +10,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<link rel="stylesheet" type="text/css" href="<c:url value='/css/style.css'/>"/><html>
 <head>
     <meta charset="UTF-8">
     <title>Header</title>
+<%--    <link rel="stylesheet" type="text/css" href="<c:url value='/css/style.css'/>"/><html>--%>
+
 </head>
 <body>
 <div class="header">
