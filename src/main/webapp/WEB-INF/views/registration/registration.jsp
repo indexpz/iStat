@@ -17,7 +17,7 @@
 </head>
 <body>
 
-<form:form method="post" action="/register">
+<form:form method="post" modelAttribute="user" action="/register">
     <div>
         <label>Email:
             <input type="email" name="username"/>

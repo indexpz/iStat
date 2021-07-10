@@ -2,11 +2,15 @@ package pl.indexpz.iStat.controller.converter;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.indexpz.iStat.domain.model.User;
 import pl.indexpz.iStat.domain.service.AuthenticationService;
+
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/register")
@@ -25,7 +29,11 @@ public class RegistrationController {
     }
 
     @PostMapping
-    public String processRegistrationPage(User user){
+    public String processRegistrationPage(@ModelAttribute("user") @Valid User user, BindingResult bindings){
+        if(bindings.hasErrors()){
+            return "registration/registration";
+
+        }
         authenticationService.registerUser(user);
         return "redirect:/login";
     }
