@@ -20,10 +20,13 @@ public class VehicleRecord {
     private Long id;
     @Column(name="distance_meter")
     private Integer distanceMeter;
-    @Column
+    //TODO Przy kwotach zawsze używać scale/precision albo korzystać z liczb całkowitych
+    @Column(scale = 2, precision = 7)
     private Double refueling;
     @Column(name="price_per_fuel_unit")
     private Double pricePerFuelUnit;
+    //TODO Wykorzystać LocalDate albo LocalDateTime
+    //TODO Do formatowania użyć @DataTimeFormat
     @Column
     private String data;
 

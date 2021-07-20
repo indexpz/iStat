@@ -12,6 +12,7 @@ public class HomePageController {
 
     @GetMapping("/")
     public String prepareHome() {
+        //TODO Używać loggera, ale tam gdzie ma to sens, np. przed/po zapisie do bazy danych + dane na wejściu do kontrolera/serwisu
         log.info("Start home.jsp");
         return "home/homepage";
     }

@@ -35,6 +35,7 @@ public class VehicleRecordEditController {
 
     @PostMapping
     public String processEdit(@Valid VehicleRecord vehicleRecord, Long vehicleId, BindingResult bindings) {
+        //TODO Zamiast takich zapisów "na zauważenie", to można po prostu logi potem filtrować/wyszukiwać ;)
         log.info(vehicleRecord.getId() + " ############################################ ");
         if (bindings.hasErrors()) {
             return "/vehicle_records/vehicle-records-add";

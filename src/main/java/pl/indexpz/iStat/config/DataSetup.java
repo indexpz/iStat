@@ -11,6 +11,7 @@ import java.awt.print.Book;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 @Component
+//TODO Usuwać, zamiast komentować
 public class DataSetup {
 
     private static final Logger loger = LoggerFactory.getLogger(DataSetup.class);

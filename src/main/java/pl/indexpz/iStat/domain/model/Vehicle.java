@@ -35,6 +35,7 @@ public class Vehicle {
     private String fuelUnit;
 
 
+    //TODO Usuwać komentarze
 //    @OneToMany( cascade = CascadeType.ALL)
     @OneToMany(mappedBy = "vehicle", cascade = CascadeType.ALL)
 //    @JoinColumn(name = "vehicle_id")

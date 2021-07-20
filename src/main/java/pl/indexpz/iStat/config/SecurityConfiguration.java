@@ -42,7 +42,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/vehicle", "/vehicle/", "/vehicle/*", "/vehicle/**").authenticated()
                 .antMatchers("/forms/user", "/forms/user/", "/forms/user/*").hasAnyRole("USER")
                 .antMatchers("/static/css", "/static/css/**").permitAll()
-                .antMatchers("/*").permitAll()
+                //TODO Ten zapis kłóci się z kolejnym. I takich zapisów typu "pozwól na wszystko
+                //     bo nie chce mi się zastanawiać jakie mam endpointy w aplikacji" nie wolno stosować
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()

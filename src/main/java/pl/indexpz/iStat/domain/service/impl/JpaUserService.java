@@ -2,6 +2,7 @@ package pl.indexpz.iStat.domain.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import pl.indexpz.iStat.domain.model.User;
@@ -29,6 +30,13 @@ public class JpaUserService implements UserService {
         return userRepository.findByUsername(username).orElseThrow((() -> new ResourceNotFoundException("User with username " + username + " not exist.")));
     }
 
+    @Secured("isAuthenticated()")
+    public User getCurrentUser() {
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        User user = userRepository.getByUsername(username);
+        return user;
+    }
+
     @Override
     public User getUserById(Long userId) {
         return userRepository.findById(userId).orElseThrow((() -> new ResourceNotFoundException("User with id " + userId + " not exist.")));
@@ -36,6 +44,7 @@ public class JpaUserService implements UserService {
 
     @Override
     public void updateUser(User userToUpdate) {
+        //TODO Bardzo dobrze, że we wszystkich operacjach użytkownik jest najpierw pobierany
         log.info("UserID to update " + userToUpdate.getId());
         log.info("User to update " + userToUpdate);
         User user = getUserByUserName(userToUpdate.getUsername());

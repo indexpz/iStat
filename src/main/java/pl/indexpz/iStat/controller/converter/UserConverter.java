@@ -9,6 +9,7 @@ import pl.indexpz.iStat.domain.repository.VehicleRepository;
 import javax.swing.text.EditorKit;
 import java.util.Optional;
 
+//TODO Dobra próba, teraz tylko należy ją kontynuować
 @Component
 public class UserConverter {
 

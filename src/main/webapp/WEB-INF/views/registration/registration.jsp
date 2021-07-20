@@ -24,7 +24,7 @@
 <form:form method="post" modelAttribute="data" action="/register">
     <div>
         <label>Email:
-            <input type="email" name="username"/>
+            <input type="email" name="username" value="${data.username}"/>
             <form:errors path="username" element="div"/>
         </label>
     </div>

@@ -1,3 +1,4 @@
+//TODO Tu się coś z pakietami pogubiło ;)
 package pl.indexpz.iStat.controller.converter;
 
 import org.springframework.stereotype.Controller;

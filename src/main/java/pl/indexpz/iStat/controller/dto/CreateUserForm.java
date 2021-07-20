@@ -24,6 +24,8 @@ public class CreateUserForm {
 //    private List<Vehicle> userVehicles = new ArrayList<>();
 
 
+    //TODO Jeżeli DTO umie się samo konwertować do encji do tracimy dużo sensu DTO bo nie ma separacji
+    //     od encji
     public User toUser() {
         return new User(null, username, firstName, lastName, password, null, null);
     }
