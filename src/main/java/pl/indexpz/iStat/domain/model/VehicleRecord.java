@@ -4,9 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+
 
 @Entity
 @Table(name = "vehicle_records")
@@ -25,6 +26,7 @@ public class VehicleRecord {
     @Column(name="price_per_fuel_unit")
     private Double pricePerFuelUnit;
     @Column
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private String data;
 
 

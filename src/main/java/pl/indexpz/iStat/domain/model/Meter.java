@@ -4,8 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "meters")
@@ -20,6 +22,9 @@ public class Meter {
     private Long id;
     @Column(name = "meter_name")
     private String meterName;
+    @Column
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    private LocalDate data;
     @Column(name = "meter_reading")
     private Double meterReading;
     @Column
