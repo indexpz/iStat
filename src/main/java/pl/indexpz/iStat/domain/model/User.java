@@ -36,4 +36,7 @@ public class User {
 
     @OneToMany(mappedBy = "id")
     private List<Vehicle> userVehicles = new ArrayList<>();
+
+    @OneToMany(mappedBy = "id")
+    private List<Meter> userMeters = new ArrayList<>();
 }

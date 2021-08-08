@@ -28,4 +28,7 @@ public class Meter {
     private Boolean status;
     @Column
     private String description;
+
+    @ManyToOne
+    private User user;
 }

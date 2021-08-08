@@ -20,6 +20,6 @@ public class CreateUserForm {
 
 
     public User toUser(){
-        return new User(null, userName, firstName, lastName, password, null ,null);
+        return new User(null, userName, firstName, lastName, password, null ,null, null);
     }
 }
