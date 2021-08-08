@@ -1,4 +1,4 @@
-package pl.indexpz.iStat.controller.converter;
+package pl.indexpz.iStat.web.converters;
 
 import org.springframework.stereotype.Component;
 import pl.indexpz.iStat.controller.dto.EditUserForm;

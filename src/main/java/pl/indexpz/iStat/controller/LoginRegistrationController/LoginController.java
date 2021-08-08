@@ -1,4 +1,4 @@
-package pl.indexpz.iStat.controller.converter;
+package pl.indexpz.iStat.controller.LoginRegistrationController;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

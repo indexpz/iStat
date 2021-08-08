@@ -17,7 +17,7 @@ import java.util.List;
 @Service
 @Slf4j
 @RequiredArgsConstructor //zamiast konstruktora
-public class JpaVehicleRecordService implements VehicleRecordService {
+public class VehicleRecordServiceImpl implements VehicleRecordService {
 
     private final VehicleRecordRepository vehicleRecordRepository;
     private final VehicleRepository vehicleRepository;
