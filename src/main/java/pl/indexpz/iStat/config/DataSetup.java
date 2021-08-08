@@ -17,20 +17,14 @@ public class DataSetup {
 
     private AtomicBoolean alreadyRun = new AtomicBoolean(false);
 
-//    private final BookRepository bookRepository;
-//
-//
-//    public DataSetup(BookRepository bookRepository) {
-//        this.bookRepository = bookRepository;
-//    }
+
 
     @EventListener
     @Transactional
     public void testData(ContextRefreshedEvent event){
         if(!alreadyRun.getAndSet(true)){
             System.out.println("Aplikacja właśnie się uruchomiła i rozpoczynamy zabawę");
-//            bookRepository.save(new Book(null, "isbn-445", "Pan Wołodyjowski", "Henryk Sienkiewicz", "Na zdrowie", "przygodowa"));
-//            bookRepository.save(new Book(null, "isbn-118", "Niebieski", "Jurand Janicki", "Pij", "sy-fy"));
+
         }
     }
 }

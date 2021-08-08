@@ -12,7 +12,6 @@ public class HomePageController {
 
     @GetMapping("/")
     public String prepareHome() {
-        log.info("Start home.jsp");
         return "home/homepage";
     }
 }

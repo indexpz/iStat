@@ -23,12 +23,11 @@ public class VehicleRecord {
     private Integer distanceMeter;
     @Column
     private Double refueling;
-    @Column(name="price_per_fuel_unit")
+    @Column(name="price_per_fuel_unit", scale = 2, precision = 7)
     private Double pricePerFuelUnit;
     @Column
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private String data;
-
 
     @ManyToOne
     private Vehicle vehicle;

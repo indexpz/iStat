@@ -25,7 +25,7 @@ public class Meter {
     @Column
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate data;
-    @Column(name = "meter_reading")
+    @Column(name = "meter_reading", scale = 2, precision = 7)
     private Double meterReading;
     @Column
     private String unit;

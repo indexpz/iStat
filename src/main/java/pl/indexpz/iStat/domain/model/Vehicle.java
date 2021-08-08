@@ -29,10 +29,8 @@ public class Vehicle {
     @Column(name = "fuel_unit")
     private String fuelUnit;
 
-
-//    @OneToMany( cascade = CascadeType.ALL)
     @OneToMany(mappedBy = "vehicle", cascade = CascadeType.ALL)
-//    @JoinColumn(name = "vehicle_id")
+
     private List<VehicleRecord> vehicleRecords = new ArrayList<>();
 
     @ManyToOne

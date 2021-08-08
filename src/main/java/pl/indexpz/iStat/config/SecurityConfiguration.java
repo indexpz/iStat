@@ -42,7 +42,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/vehicle", "/vehicle/", "/vehicle/*", "/vehicle/**").authenticated()
                 .antMatchers("/forms/user", "/forms/user/", "/forms/user/*").hasAnyRole("USER")
                 .antMatchers("/static/css", "/static/css/**").permitAll()
-                .antMatchers("/*").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
