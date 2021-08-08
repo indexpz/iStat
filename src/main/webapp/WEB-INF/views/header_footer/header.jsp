@@ -14,12 +14,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Header</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="<c:url value='/css/style.css'/>"/>
 </head>
 <body>
+
 <div class="header">
     <div class="ui-button"><a href="/register">Rejstracja</a></div>
     <div class="ui-button"><a href="/login">Logowanie</a></div>

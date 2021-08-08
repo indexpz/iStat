@@ -30,6 +30,7 @@ public class UserEditController {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         model.addAttribute("user", userService.getUserByUserName(username));
         log.info("User do edycji "  + userService.getUserByUserName(username).getUsername() + ", " + userService.getUserByUserName(username).getFirstName() + ", " +userService.getUserByUserName(username).getLastName());
+
         return "users/user-editform";
     }
 
