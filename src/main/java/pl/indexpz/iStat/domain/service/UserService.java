@@ -15,5 +15,5 @@ public interface UserService {
 
     void updateUserPassword(User userToUpdatePassword);
 
-    public void delete(User userToDelete);
+    void delete(User userToDelete);
 }

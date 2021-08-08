@@ -7,18 +7,16 @@ import java.util.List;
 
 public interface VehicleRecordService {
 
-//    public VehicleRecord addVehicleRecord(VehicleRecord vehicleRecordToAdd);
 
-    public VehicleRecord addVehicleRecord(VehicleRecord vehicleRecordToAdd, Vehicle vehicle);
+    VehicleRecord addVehicleRecord(VehicleRecord vehicleRecordToAdd, Vehicle vehicle);
 
+    List<VehicleRecord> getVehicleRecordsByVehicleId(Long vehicleId);
 
-    public List<VehicleRecord> getVehicleRecordsByVehicleId(Long vehicleId);
+    VehicleRecord getVehicleRecordById(Long vehicleRecordId);
 
-    public VehicleRecord getVehicleRecordById(Long vehicleRecordId);
+    void updateVehicleRecord(VehicleRecord vehicleRecordToUpdate);
 
-    public void updateVehicleRecord(VehicleRecord vehicleRecordToUpdate);
-
-    public void removeVehicleRecord(VehicleRecord vehicleRecordToDelete);
+    void removeVehicleRecord(VehicleRecord vehicleRecordToDelete);
 
 
 }

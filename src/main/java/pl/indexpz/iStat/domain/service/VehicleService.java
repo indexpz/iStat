@@ -12,15 +12,15 @@ import java.util.List;
 @Transactional
 public interface VehicleService {
 
-    public Vehicle addVehicle(Vehicle vehicleToAdd);
+    Vehicle addVehicle(Vehicle vehicleToAdd);
 
-    public List<Vehicle> getVehicles();
+    List<Vehicle> getVehicles();
 
-     public Vehicle getVehicleById(Long vehicleId);
+    Vehicle getVehicleById(Long vehicleId);
 
-    public Vehicle getVehicleByVehicleName(String vehicleName);
+    Vehicle getVehicleByVehicleName(String vehicleName);
 
-     public void updateVehicle(Vehicle vehicleToUpdate);
+    void updateVehicle(Vehicle vehicleToUpdate);
 
-     public void removeVehicle(Vehicle vehicleToDelete);
+    void removeVehicle(Vehicle vehicleToDelete);
 }
