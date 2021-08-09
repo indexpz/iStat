@@ -5,11 +5,12 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import pl.indexpz.iStat.domain.model.Meter;
+import pl.indexpz.iStat.domain.model.MeterRecord;
 import pl.indexpz.iStat.domain.model.User;
 import pl.indexpz.iStat.domain.repository.MeterRepository;
 import pl.indexpz.iStat.domain.repository.UserRepository;
 import pl.indexpz.iStat.domain.service.MeterService;
+import pl.indexpz.iStat.exceptions.ResourceNotFoundException;
 
 import java.util.List;
 
@@ -23,7 +24,7 @@ public class MeterServiceImpl implements MeterService {
 
     @Override
     @Transactional
-    public Meter addMeter(Meter meterToAdd) {
+    public MeterRecord addMeter(MeterRecord meterToAdd) {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         User user = userRepository.findByUsername(username).get();
         meterToAdd.setUser(user);
@@ -31,28 +32,30 @@ public class MeterServiceImpl implements MeterService {
     }
 
     @Override
-    public List<Meter> getMeters() {
+    public List<MeterRecord> getMeters() {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
-        return null;
+        return meterRepository.findAllByUserUsername(username);
     }
 
     @Override
-    public Meter getMeterById(Long id) {
-        return null;
+    public MeterRecord getMeterById(Long id) {
+        return meterRepository.findById(id).orElseThrow((()->new ResourceNotFoundException("Meter with id " + id + " not exist.")));
     }
 
     @Override
-    public Meter getMeterByMeterName(String meterName) {
-        return null;
+    public MeterRecord getMeterByMeterName(String meterName) {
+        MeterRecord meter = meterRepository.findMeterByMeterName(meterName);
+        return meter;
+    }
+
+
+    @Override
+    public void updateMeter(MeterRecord meter) {
+
     }
 
     @Override
-    public void updateMeter(Meter meter) {
-
-    }
-
-    @Override
-    public void removeMeter(Meter meter) {
+    public void removeMeter(MeterRecord meter) {
 
     }
 }
