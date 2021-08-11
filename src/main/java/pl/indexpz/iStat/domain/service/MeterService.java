@@ -3,24 +3,26 @@ package pl.indexpz.iStat.domain.service;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import pl.indexpz.iStat.domain.model.Meter;
 import pl.indexpz.iStat.domain.model.MeterRecord;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Repository
 @Transactional
 public interface MeterService {
 
-    MeterRecord addMeter(MeterRecord meter);
+    Meter addMeter(Meter meter);
 
-    List<MeterRecord> getMeters();
+    List<Meter> getMeters();
 
-    MeterRecord getMeterById(Long id);
+    Optional<Meter> getMeterById(Long id);
 
-    MeterRecord getMeterByMeterName(String meterName);
+    Meter getMeterByMeterName(String meterName);
 
-    void updateMeter(MeterRecord meter);
+    void updateMeter(Meter meter);
 
-    void removeMeter(MeterRecord meter);
+    void removeMeter(Meter meter);
 }

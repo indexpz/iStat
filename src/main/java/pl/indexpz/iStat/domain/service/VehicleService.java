@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 import pl.indexpz.iStat.domain.model.Vehicle;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Repository
@@ -16,7 +17,7 @@ public interface VehicleService {
 
     List<Vehicle> getVehicles();
 
-    Vehicle getVehicleById(Long vehicleId);
+    Optional<Vehicle> getVehicleById(Long vehicleId);
 
     Vehicle getVehicleByVehicleName(String vehicleName);
 

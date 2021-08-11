@@ -5,18 +5,18 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import pl.indexpz.iStat.domain.model.MeterRecord;
+import pl.indexpz.iStat.domain.model.Meter;
 import pl.indexpz.iStat.domain.model.User;
 import pl.indexpz.iStat.domain.repository.MeterRepository;
 import pl.indexpz.iStat.domain.repository.UserRepository;
 import pl.indexpz.iStat.domain.service.MeterService;
-import pl.indexpz.iStat.exceptions.ResourceNotFoundException;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Slf4j
-@RequiredArgsConstructor //zamiast konstruktora
+@RequiredArgsConstructor
 public class MeterServiceImpl implements MeterService {
 
     private final UserRepository userRepository;
@@ -24,7 +24,7 @@ public class MeterServiceImpl implements MeterService {
 
     @Override
     @Transactional
-    public MeterRecord addMeter(MeterRecord meterToAdd) {
+    public Meter addMeter(Meter meterToAdd) {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         User user = userRepository.findByUsername(username).get();
         meterToAdd.setUser(user);
@@ -32,30 +32,46 @@ public class MeterServiceImpl implements MeterService {
     }
 
     @Override
-    public List<MeterRecord> getMeters() {
+    public List<Meter> getMeters() {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         return meterRepository.findAllByUserUsername(username);
     }
 
     @Override
-    public MeterRecord getMeterById(Long id) {
-        return meterRepository.findById(id).orElseThrow((()->new ResourceNotFoundException("Meter with id " + id + " not exist.")));
+    public Optional<Meter> getMeterById(Long meterId) {
+        return meterRepository.findById(meterId);
     }
 
     @Override
-    public MeterRecord getMeterByMeterName(String meterName) {
-        MeterRecord meter = meterRepository.findMeterByMeterName(meterName);
+    public Meter getMeterByMeterName(String meterName) {
+        Meter meter = meterRepository.findMeterByMeterName(meterName);
         return meter;
     }
 
 
     @Override
-    public void updateMeter(MeterRecord meter) {
+    public void updateMeter(Meter meterToUpdate) {
+        Optional<Meter> optionalMeter = getMeterById(meterToUpdate.getId());
+        if (optionalMeter.isPresent()) {
+            Meter meter = optionalMeter.get();
+            meter.setMeterName(meterToUpdate.getMeterName());
+            meter.setUnit(meterToUpdate.getUnit());
+            meter.setDescription(meterToUpdate.getDescription());
+            meterRepository.save(meter);
+        }else{
+            Meter meter = new Meter();
+        }
 
     }
 
     @Override
-    public void removeMeter(MeterRecord meter) {
-
+    public void removeMeter(Meter meterToDelete) {
+        Optional<Meter> optionalMeter = getMeterById(meterToDelete.getId());
+        if(optionalMeter.isPresent()){
+            Meter meter = optionalMeter.get();
+            meterRepository.delete(meter);
+        }else{
+            Meter meter = new Meter();
+        }
     }
 }

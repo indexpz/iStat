@@ -30,7 +30,6 @@ public class Vehicle {
     private String fuelUnit;
 
     @OneToMany(mappedBy = "vehicle", cascade = CascadeType.ALL)
-
     private List<VehicleRecord> vehicleRecords = new ArrayList<>();
 
     @ManyToOne

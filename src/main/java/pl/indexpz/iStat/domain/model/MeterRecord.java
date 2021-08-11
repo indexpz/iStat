@@ -23,12 +23,16 @@ public class MeterRecord {
     @Column
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate data;
-    @Column(name = "meter_record", scale = 2, precision = 7)
+    @Column(name = "meter_record", scale = 3, precision = 10)
     private Double meterRecord;
     @Column(columnDefinition = "boolean default false")
     private Boolean status;
     @Column
     private String description;
+    @Column(scale = 2,precision = 7)
+    private Double pricePerMererUnit;
 
+    @ManyToOne
+    private Meter meter;
 
 }

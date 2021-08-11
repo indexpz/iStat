@@ -4,6 +4,7 @@ import pl.indexpz.iStat.domain.model.Vehicle;
 import pl.indexpz.iStat.domain.model.VehicleRecord;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface VehicleRecordService {
 
@@ -12,11 +13,10 @@ public interface VehicleRecordService {
 
     List<VehicleRecord> getVehicleRecordsByVehicleId(Long vehicleId);
 
-    VehicleRecord getVehicleRecordById(Long vehicleRecordId);
+    Optional<VehicleRecord> getVehicleRecordById(Long vehicleRecordId);
 
     void updateVehicleRecord(VehicleRecord vehicleRecordToUpdate);
 
     void removeVehicleRecord(VehicleRecord vehicleRecordToDelete);
-
 
 }

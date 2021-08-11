@@ -11,8 +11,8 @@ import pl.indexpz.iStat.domain.repository.VehicleRepository;
 import pl.indexpz.iStat.domain.service.VehicleRecordService;
 import pl.indexpz.iStat.exceptions.ResourceNotFoundException;
 
-import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Slf4j
@@ -44,25 +44,34 @@ public class VehicleRecordServiceImpl implements VehicleRecordService {
     }
 
     @Override
-    public VehicleRecord getVehicleRecordById(Long vehicleRecordId) {
-        return vehicleRecordRepository.findById(vehicleRecordId).orElseThrow(() -> new ResourceNotFoundException("Record with id " + vehicleRecordId + " not exist."));
+    public Optional<VehicleRecord> getVehicleRecordById(Long vehicleRecordId) {
+        return vehicleRecordRepository.findById(vehicleRecordId);
     }
 
     @Override
     public void updateVehicleRecord(VehicleRecord vehicleRecordToUpdate) {
-        VehicleRecord vehicleRecord = getVehicleRecordById(vehicleRecordToUpdate.getId());
-        vehicleRecord.setData(vehicleRecordToUpdate.getData());
-        vehicleRecord.setDistanceMeter(vehicleRecordToUpdate.getDistanceMeter());
-        vehicleRecord.setRefueling(vehicleRecordToUpdate.getRefueling());
-        vehicleRecord.setPricePerFuelUnit(vehicleRecordToUpdate.getPricePerFuelUnit());
-        vehicleRecordRepository.save(vehicleRecord);
+        Optional<VehicleRecord> optionalVehicleRecord = getVehicleRecordById(vehicleRecordToUpdate.getId());
+        if (optionalVehicleRecord.isPresent()) {
+            VehicleRecord vehicleRecord = optionalVehicleRecord.get();
+            vehicleRecord.setData(vehicleRecordToUpdate.getData());
+            vehicleRecord.setDistanceMeter(vehicleRecordToUpdate.getDistanceMeter());
+            vehicleRecord.setRefueling(vehicleRecordToUpdate.getRefueling());
+            vehicleRecord.setPricePerFuelUnit(vehicleRecordToUpdate.getPricePerFuelUnit());
+            vehicleRecordRepository.save(vehicleRecord);
+        } else {
+            VehicleRecord vehicleRecord = new VehicleRecord();
+        }
+
     }
 
     @Override
     public void removeVehicleRecord(VehicleRecord vehicleRecordToDelete) {
-        VehicleRecord vehicleRecord = getVehicleRecordById(vehicleRecordToDelete.getId());
-        vehicleRecordRepository.delete(vehicleRecord);
+        Optional<VehicleRecord> optionalVehicleRecord = getVehicleRecordById(vehicleRecordToDelete.getId());
+        if (optionalVehicleRecord.isPresent()) {
+            VehicleRecord vehicleRecord = optionalVehicleRecord.get();
+            vehicleRecordRepository.delete(vehicleRecord);
+        } else {
+            VehicleRecord vehicleRecord = new VehicleRecord();
+        }
     }
-
-
 }
