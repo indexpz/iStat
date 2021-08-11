@@ -16,19 +16,11 @@ import java.util.Optional;
 
 @Service
 @Slf4j
-@RequiredArgsConstructor //zamiast konstruktora
+@RequiredArgsConstructor
 public class VehicleRecordServiceImpl implements VehicleRecordService {
 
     private final VehicleRecordRepository vehicleRecordRepository;
     private final VehicleRepository vehicleRepository;
-
-
-//    @Override
-//    public VehicleRecord addVehicleRecord(VehicleRecord vehicleRecordToAdd) {
-//        Vehicle vehicle = vehicleRepository.findVehicleByVehicleRecord(vehicleRecordToAdd);
-//        vehicleRecordToAdd.setVehicle(vehicle);
-//        return vehicleRecordRepository.save(vehicleRecordToAdd);
-//    }
 
     @Override
     @Transactional

@@ -2,16 +2,11 @@ package pl.indexpz.iStat.domain.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import pl.indexpz.iStat.domain.model.User;
 import pl.indexpz.iStat.domain.repository.UserRepository;
 import pl.indexpz.iStat.domain.service.UserService;
 import pl.indexpz.iStat.exceptions.ResourceNotFoundException;
-
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import java.util.Optional;
 
 @Service
 @Slf4j

@@ -16,6 +16,7 @@ import pl.indexpz.iStat.domain.service.VehicleService;
 
 import javax.validation.Valid;
 import java.time.LocalDate;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/vehicle-records/add")
@@ -43,12 +44,14 @@ public class VehicleRecordCreateController {
             return "/vehicle_records/vehicle-records-add";
         }
         log.info("vehicleRecord id "+vehicleRecord.getId());
-//log.info("vehicle id" + vehicleService.getVehicleById(id).getVehicleName());
-        Vehicle vehicle = vehicleService.getVehicleById(vehicleId);
-        log.info("zapis do bazy vehicleName " + vehicle.getVehicleName() +" vehicleId "+ vehicle.getId());
-        vehicleRecord.setId(vehicleRecord.getId());
-        log.info("zapis do bazy vehicleNameRecord id " + vehicleRecord.getId());
-        vehicleRecordService.addVehicleRecord(vehicleRecord, vehicle);
+        Optional<Vehicle> optionalVehicle = vehicleService.getVehicleById(vehicleId);
+        if(optionalVehicle.isPresent()){
+            Vehicle vehicle = optionalVehicle.get();
+            log.info("zapis do bazy vehicleName " + vehicle.getVehicleName() +" vehicleId "+ vehicle.getId());
+            vehicleRecord.setId(vehicleRecord.getId());
+            log.info("zapis do bazy vehicleNameRecord id " + vehicleRecord.getId());
+            vehicleRecordService.addVehicleRecord(vehicleRecord, vehicle);
+        }
         return "redirect:/vehicle-records/list?id="+vehicleId;
     }
 }

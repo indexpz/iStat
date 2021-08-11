@@ -9,14 +9,14 @@ import java.util.Optional;
 public interface VehicleRecordService {
 
 
-    VehicleRecord addVehicleRecord(VehicleRecord vehicleRecordToAdd, Vehicle vehicle);
+    VehicleRecord addVehicleRecord(VehicleRecord vehicleRecord, Vehicle vehicle);
 
-    List<VehicleRecord> getVehicleRecordsByVehicleId(Long vehicleId);
+    List<VehicleRecord> getVehicleRecordsByVehicleId(Long id);
 
-    Optional<VehicleRecord> getVehicleRecordById(Long vehicleRecordId);
+    Optional<VehicleRecord> getVehicleRecordById(Long id);
 
-    void updateVehicleRecord(VehicleRecord vehicleRecordToUpdate);
+    void updateVehicleRecord(VehicleRecord vehicleRecord);
 
-    void removeVehicleRecord(VehicleRecord vehicleRecordToDelete);
+    void removeVehicleRecord(VehicleRecord vehicleRecord);
 
 }

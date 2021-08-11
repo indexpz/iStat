@@ -10,7 +10,7 @@ import javax.validation.constraints.NotBlank;
 public class CreateUserForm {
     @Email
     @NotBlank
-    private String userName;
+    private String username;
     @NotBlank
     private String firstName;
     @NotBlank
@@ -20,6 +20,6 @@ public class CreateUserForm {
 
 
     public User toUser(){
-        return new User(null, userName, firstName, lastName, password, null ,null, null);
+        return new User(null, username, firstName, lastName, password, null ,null, null);
     }
 }

@@ -16,6 +16,7 @@ import pl.indexpz.iStat.domain.service.VehicleService;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 
 
 @Controller
@@ -31,28 +32,31 @@ public class VehicleEditDataController {
         return List.of("kilometry", "mile", "godziny");
     }
 
-    @ModelAttribute(name="fuelName")
+    @ModelAttribute(name = "fuelName")
     public List<String> fuelName() {
         return List.of("benzyna 95", "benzyna 98", "olej napędowy", "energia elektryczna", "LPG");
     }
 
-    @ModelAttribute(name="fuelUnit")
+    @ModelAttribute(name = "fuelUnit")
     public List<String> fuelUnit() {
         return List.of("litr", "galon", "KWh", "kilogramy", "");
     }
 
     @GetMapping
-    public String prepareEdit(Long id, Model model){
-        Vehicle vehicle = vehicleService.getVehicleById(id);
-        log.info(vehicle.toString());
-        model.addAttribute("vehicle", vehicle);
+    public String prepareEdit(Long id, Model model) {
+        Optional<Vehicle> optionalVehicle = vehicleService.getVehicleById(id);
+        if (optionalVehicle.isPresent()) {
+            Vehicle vehicle = optionalVehicle.get();
+            log.info(vehicle.toString());
+            model.addAttribute("vehicle", vehicle);
+        }
         return "vehicles/vehicle-edit-data";
     }
 
 
     @PostMapping
-    public String processEdit(@Valid Vehicle vehicle, BindingResult bindings){
-        if(bindings.hasErrors()){
+    public String processEdit(@Valid Vehicle vehicle, BindingResult bindings) {
+        if (bindings.hasErrors()) {
             return "vehicles/vehicle-edit-data";
         }
         vehicleService.updateVehicle(vehicle);

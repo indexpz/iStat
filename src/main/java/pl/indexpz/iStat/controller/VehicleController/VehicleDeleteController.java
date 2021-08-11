@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import pl.indexpz.iStat.domain.model.Vehicle;
 import pl.indexpz.iStat.domain.service.VehicleService;
 
+import java.awt.desktop.OpenFilesEvent;
+import java.util.Optional;
+
 @Controller
 @RequestMapping("/vehicle/delete")
 //@RequiredArgsConstructor //zamiast konstruktora
@@ -23,16 +26,22 @@ public class VehicleDeleteController {
 
     @GetMapping
     public String prepareDelete(Long id, Model model){
-        Vehicle vehicle = vehicleService.getVehicleById(id);
-        log.info(vehicle.toString());
-        model.addAttribute("vehicle", vehicle);
+        Optional<Vehicle> optionalVehicle = vehicleService.getVehicleById(id);
+        if(optionalVehicle.isPresent()){
+            Vehicle vehicle = optionalVehicle.get();
+            log.info(vehicle.toString());
+            model.addAttribute("vehicle", vehicle);
+        }
         return "/vehicles/vehicle-delete";
     }
 
     @PostMapping
     public String processDelete(Long id){
-        Vehicle vehicle = vehicleService.getVehicleById(id);
-        vehicleService.removeVehicle(vehicle);
+        Optional<Vehicle> optionalVehicle = vehicleService.getVehicleById(id);
+        if(optionalVehicle.isPresent()){
+            Vehicle vehicle = optionalVehicle.get();
+            vehicleService.removeVehicle(vehicle);
+        }
         return "redirect:/user/homepage";
     }
 }

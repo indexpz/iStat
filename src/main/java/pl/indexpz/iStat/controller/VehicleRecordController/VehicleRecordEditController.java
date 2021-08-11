@@ -14,6 +14,7 @@ import pl.indexpz.iStat.domain.service.VehicleRecordService;
 import pl.indexpz.iStat.domain.service.VehicleService;
 
 import javax.validation.Valid;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/vehicle-records/edit")
@@ -35,14 +36,17 @@ public class VehicleRecordEditController {
 
     @PostMapping
     public String processEdit(@Valid VehicleRecord vehicleRecord, Long vehicleId, BindingResult bindings) {
-        log.info(vehicleRecord.getId()+"");
+        log.info(vehicleRecord.getId() + "");
         if (bindings.hasErrors()) {
             return "/vehicle_records/vehicle-records-add";
         }
-
-        vehicleRecord.setVehicle(vehicleService.getVehicleById(vehicleId));
+        Optional<Vehicle> optionalVehicle = vehicleService.getVehicleById(vehicleId);
+        if(optionalVehicle.isPresent()){
+            Vehicle vehicle = optionalVehicle.get();
+            vehicleRecord.setVehicle(vehicle);
+        }
         vehicleRecordService.updateVehicleRecord(vehicleRecord);
-        log.info(vehicleRecord.getId()+"");
+        log.info(vehicleRecord.getId() + "");
 
         return "redirect:/vehicle-records/list?id=" + vehicleId;
     }
